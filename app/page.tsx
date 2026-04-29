@@ -9,6 +9,7 @@ import {
   Code2,
   Database,
   Briefcase,
+  MapPin,
 } from "lucide-react";
 import {
   SiReact,
@@ -196,11 +197,17 @@ export default function Portfolio() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.8 }}
               className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
-              <p className="md:col-span-7 col-span-1 text-zinc-400 text-lg md:text-2xl font-normal leading-relaxed">
-                I architect and build end-to-end web applications. Focusing on
-                strictly typed React frontends, robust scalable backends, and
-                high-performance delivery. Zero fluff.
-              </p>
+              <div className="md:col-span-7 col-span-1 flex flex-col gap-5">
+                <p className="text-zinc-400 text-lg md:text-2xl font-normal leading-relaxed">
+                  I architect and build end-to-end web applications. Focusing on
+                  strictly typed React frontends, robust scalable backends, and
+                  high-performance delivery. Zero fluff.
+                </p>
+                <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-zinc-600">
+                  <MapPin size={12} className="text-emerald-500/60" />
+                  Warsaw, Poland / Remote
+                </span>
+              </div>
               <div className="md:col-span-5 col-span-1 flex flex-wrap items-center gap-4 font-mono text-sm md:justify-end">
                 <motion.a
                   whileHover={{ scale: 1.05 }}
