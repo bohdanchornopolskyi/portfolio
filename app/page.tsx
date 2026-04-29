@@ -4,7 +4,6 @@ import {
   ArrowUpRight,
   Github,
   Linkedin,
-  Terminal,
   User,
   Code2,
   Database,
@@ -272,45 +271,50 @@ export default function Portfolio() {
               className="group relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               <motion.div
                 variants={fadeInUp}
-                className="lg:col-span-7 aspect-[4/3] w-full rounded-[2rem] bg-[#0a0a0a] border border-zinc-900/80 flex items-center justify-center overflow-hidden transition-colors duration-500 group-hover:border-emerald-500/30 group-hover:bg-[#0c0c0c] relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <motion.div
-                  initial={{ scale: 1 }}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-zinc-700 font-mono text-sm tracking-widest uppercase flex flex-col items-center gap-6 w-full h-full justify-center">
-                  <Terminal
-                    size={48}
-                    strokeWidth={1}
-                    className="group-hover:text-emerald-500/50 transition-colors duration-500"
-                  />
-                  [ Preview Here ]
-                </motion.div>
+                className="lg:col-span-7 aspect-[16/9] w-full rounded-[2rem] bg-[#0a0a0a] border border-zinc-900/80 flex items-end justify-center overflow-hidden relative px-6 pt-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/image-cropper.png"
+                  alt="Payload Image Cropper plugin screenshot"
+                  className="w-full object-contain object-top rounded-t-xl transition-transform duration-700 group-hover:scale-[1.03] relative z-10"
+                />
               </motion.div>
               <motion.div
                 variants={fadeInUp}
                 className="lg:col-span-5 flex flex-col gap-6">
                 <div className="flex flex-wrap gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-widest text-emerald-400">
-                  <span>Next.js</span> <span>/</span> <span>Payload CMS</span>{" "}
-                  <span>/</span> <span>Postgres</span>
+                  <span>TypeScript</span> <span>/</span> <span>Payload CMS</span>{" "}
+                  <span>/</span> <span>npm</span>
                 </div>
                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-100 tracking-tight leading-[1.1] group-hover:text-zinc-200 transition-colors">
-                  Marketing CMS Platform
+                  Payload Image Cropper
                 </h3>
                 <p className="text-zinc-400 leading-relaxed text-base lg:text-lg font-normal">
-                  API-first headless architecture driving dynamic localized
-                  content globally. Built from the ground up for massive scale
-                  and intuitive content management by non-technical teams.
+                  Open-source Payload CMS plugin that lets content editors crop
+                  and frame images with configurable aspect ratios directly
+                  inside the admin panel — no external tools, no round-trips.
                 </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-zinc-300 hover:text-emerald-400 transition-colors w-fit mt-4 bg-[#0a0a0a] px-7 py-4 border border-zinc-800 hover:border-emerald-500/30 rounded-full group/btn">
-                  View Project{" "}
-                  <ArrowUpRight
-                    size={18}
-                    className="transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
-                  />
-                </a>
+                <div className="flex flex-wrap gap-3 mt-4">
+                  <a
+                    href="https://image-cropper-website.vercel.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-zinc-300 hover:text-emerald-400 transition-colors w-fit bg-[#0a0a0a] px-7 py-4 border border-zinc-800 hover:border-emerald-500/30 rounded-full group/btn">
+                    Live Site{" "}
+                    <ArrowUpRight
+                      size={18}
+                      className="transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
+                    />
+                  </a>
+                  <a
+                    href="https://github.com/bohdanchornopolskyi/image-cropper-plugin"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-zinc-500 hover:text-zinc-200 transition-colors w-fit bg-[#0a0a0a] px-7 py-4 border border-zinc-800 hover:border-zinc-700 rounded-full group/btn">
+                    <Github size={16} />
+                    GitHub
+                  </a>
+                </div>
               </motion.div>
             </motion.div>
 
