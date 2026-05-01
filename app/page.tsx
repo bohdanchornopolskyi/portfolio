@@ -61,8 +61,8 @@ const techCategories = [
     title: "Backend",
     items: [
       { name: "NestJS", icon: SiNestjs, color: "group-hover:text-[#E0234E]" },
-      { name: "Python", icon: SiPython, color: "group-hover:text-[#3776AB]" },
-      { name: "Django", icon: SiDjango, color: "group-hover:text-[#092E20]" },
+      { name: "Python", icon: SiPython, color: "group-hover:text-[#FFD43B]" },
+      { name: "Django", icon: SiDjango, color: "group-hover:text-[#44B78B]" },
       {
         name: "PostgreSQL",
         icon: SiPostgresql,
@@ -89,7 +89,14 @@ export default function Portfolio() {
   const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   return (
-    <div className="min-h-screen bg-[#050505] text-zinc-300 selection:bg-emerald-500/30 font-sans relative">
+    <div className="min-h-screen bg-[#050505] text-zinc-300 selection:bg-violet-500/30 font-sans relative">
+      {/* Ambient page glows — fixed so they follow the viewport */}
+      <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
+        <div className="absolute -top-[10%] left-[5%] w-[55rem] h-[55rem] rounded-full bg-violet-700/[0.06] blur-[160px]" />
+        <div className="absolute top-[40%] right-[-5%] w-[40rem] h-[40rem] rounded-full bg-indigo-700/[0.04] blur-[140px]" />
+        <div className="absolute bottom-[5%] left-[30%] w-[35rem] h-[35rem] rounded-full bg-violet-600/[0.03] blur-[120px]" />
+      </div>
+
       {/* Fixed Vertical Navigation / Decoration */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -112,21 +119,21 @@ export default function Portfolio() {
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 20, mass: 1 }}
         className="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-[90%] md:w-auto">
-        <div className="flex items-center justify-between md:justify-center gap-4 md:gap-10 px-6 md:px-8 py-4 bg-[#0a0a0a]/80 backdrop-blur-xl border border-[#1f1f1f]/80 rounded-full font-mono text-[10px] md:text-xs uppercase tracking-widest text-zinc-400 whitespace-nowrap shadow-2xl">
-          <a href="#home" className="hover:text-emerald-400 transition-colors">
+        <div className="flex items-center justify-between md:justify-center gap-4 md:gap-10 px-6 md:px-8 py-4 bg-[#0a0a0a]/85 backdrop-blur-xl border border-white/[0.06] rounded-full font-mono text-[10px] md:text-xs uppercase tracking-widest text-zinc-400 whitespace-nowrap shadow-2xl shadow-black/50 ring-1 ring-white/[0.04]">
+          <a href="#home" className="hover:text-violet-400 transition-colors duration-200">
             Home
           </a>
           <a
             href="#projects"
-            className="hover:text-emerald-400 transition-colors">
+            className="hover:text-violet-400 transition-colors duration-200">
             Works
           </a>
-          <a href="#stack" className="hover:text-emerald-400 transition-colors">
+          <a href="#stack" className="hover:text-violet-400 transition-colors duration-200">
             Stack
           </a>
           <a
             href="#experience"
-            className="hover:text-emerald-400 transition-colors">
+            className="hover:text-violet-400 transition-colors duration-200">
             Experience
           </a>
         </div>
@@ -140,17 +147,17 @@ export default function Portfolio() {
           <motion.div style={{ y: yBg }} className="relative w-full">
             {/* Floating decorative tags */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 1 }}
-              whileHover={{ rotate: 0, scale: 1.05 }}
-              className="absolute -top-12 md:-top-4 left-0 md:left-4 px-4 py-2 border border-emerald-500/30 rounded-full text-xs font-mono text-emerald-400 flex items-center gap-2 backdrop-blur-sm bg-emerald-500/5 cursor-default">
-              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              whileHover={{ scale: 1.05 }}
+              className="absolute -top-12 md:-top-4 left-0 md:left-4 px-4 py-2 border border-violet-500/25 rounded-full text-xs font-mono text-violet-400 flex items-center gap-2 backdrop-blur-sm bg-violet-500/[0.05] cursor-default shadow-[0_0_20px_rgba(139,92,246,0.08)]">
+              <div className="w-2 h-2 rounded-full bg-violet-500 animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.9)]" />
               Ready for work
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 1.2 }}
               className="absolute -top-12 md:-top-4 right-0 md:right-4 px-4 py-2 border border-zinc-800 rounded-full text-xs font-mono text-zinc-500 hidden md:block">
               // 4+ years
@@ -172,7 +179,9 @@ export default function Portfolio() {
               <motion.div
                 variants={fadeInUp}
                 className="flex items-center gap-2 md:gap-6 mt-2 md:mt-4 flex-wrap">
-                <span className="text-emerald-400">FULL-STACK</span>
+                <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+                  FULL-STACK
+                </span>
                 <motion.span
                   whileHover={{ scale: 1.05, rotate: 2 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -202,7 +211,7 @@ export default function Portfolio() {
                   high-performance delivery. Zero fluff.
                 </p>
                 <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-zinc-600">
-                  <MapPin size={12} className="text-emerald-500/60" />
+                  <MapPin size={12} className="text-violet-500/60" />
                   Warsaw, Poland / Remote
                 </span>
               </div>
@@ -211,7 +220,7 @@ export default function Portfolio() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   href="#contact"
-                  className="px-8 py-5 md:py-4 bg-zinc-200 text-[#050505] font-bold rounded-full hover:bg-emerald-400 hover:text-[#050505] transition-colors duration-300">
+                  className="px-8 py-5 md:py-4 bg-zinc-200 text-[#050505] font-bold rounded-full hover:bg-violet-400 hover:text-[#050505] transition-colors duration-300">
                   Contact Me
                 </motion.a>
                 <motion.a
@@ -220,7 +229,7 @@ export default function Portfolio() {
                   href="https://github.com/bohdanchornopolskyi"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center w-14 h-14 bg-[#0a0a0a] border border-zinc-800 rounded-full hover:text-emerald-400 hover:border-emerald-500/50 transition-colors duration-300">
+                  className="flex items-center justify-center w-14 h-14 bg-[#0a0a0a] border border-zinc-800 rounded-full hover:text-violet-400 hover:border-violet-500/50 transition-colors duration-300">
                   <Github size={20} />
                 </motion.a>
                 <motion.a
@@ -229,7 +238,7 @@ export default function Portfolio() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center w-14 h-14 bg-[#0a0a0a] border border-zinc-800 rounded-full hover:text-emerald-400 hover:border-emerald-500/50 transition-colors duration-300">
+                  className="flex items-center justify-center w-14 h-14 bg-[#0a0a0a] border border-zinc-800 rounded-full hover:text-violet-400 hover:border-violet-500/50 transition-colors duration-300">
                   <Linkedin size={20} />
                 </motion.a>
               </div>
@@ -255,7 +264,7 @@ export default function Portfolio() {
                 Real-world systems I haven't messed up
               </p>
             </div>
-            <div className="hidden md:flex items-center gap-2 text-zinc-600 font-mono text-sm uppercase tracking-widest">
+            <div className="hidden md:flex items-center gap-2 text-zinc-700 font-mono text-sm uppercase tracking-widest">
               [ 02 ]
             </div>
           </motion.div>
@@ -270,7 +279,7 @@ export default function Portfolio() {
               className="group relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               <motion.div
                 variants={fadeInUp}
-                className="lg:col-span-7 aspect-[16/9] w-full rounded-[2rem] bg-[#0a0a0a] border border-zinc-900/80 flex items-end justify-center overflow-hidden relative px-6 pt-6">
+                className="lg:col-span-7 aspect-[16/9] w-full rounded-[2rem] bg-[#0a0a0a] border border-zinc-900/80 flex items-end justify-center overflow-hidden relative px-6 pt-6 transition-all duration-500 group-hover:border-violet-500/15 group-hover:shadow-[0_30px_80px_-20px_rgba(139,92,246,0.12)]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/image-cropper.png"
@@ -281,11 +290,11 @@ export default function Portfolio() {
               <motion.div
                 variants={fadeInUp}
                 className="lg:col-span-5 flex flex-col gap-6">
-                <div className="flex flex-wrap gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-widest text-emerald-400">
+                <div className="flex flex-wrap gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-widest text-violet-400/80">
                   <span>TypeScript</span> <span>/</span> <span>Payload CMS</span>{" "}
                   <span>/</span> <span>npm</span>
                 </div>
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-100 tracking-tight leading-[1.1] group-hover:text-zinc-200 transition-colors">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-100 tracking-tight leading-[1.1] group-hover:text-zinc-50 transition-colors">
                   Payload Image Cropper
                 </h3>
                 <p className="text-zinc-400 leading-relaxed text-base lg:text-lg font-normal">
@@ -298,7 +307,7 @@ export default function Portfolio() {
                     href="https://image-cropper-website.vercel.app/"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-zinc-300 hover:text-emerald-400 transition-colors w-fit bg-[#0a0a0a] px-7 py-4 border border-zinc-800 hover:border-emerald-500/30 rounded-full group/btn">
+                    className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-zinc-300 hover:text-violet-400 transition-colors w-fit bg-[#0a0a0a] px-7 py-4 border border-zinc-800 hover:border-violet-500/30 rounded-full group/btn">
                     Live Site{" "}
                     <ArrowUpRight
                       size={18}
@@ -326,7 +335,7 @@ export default function Portfolio() {
               className="group relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               <motion.div
                 variants={fadeInUp}
-                className="lg:col-span-7 aspect-[16/9] w-full rounded-[2rem] bg-[#F8F5EC] border border-[#e8e3d8]/60 flex items-end justify-center overflow-hidden relative px-6 pt-6">
+                className="lg:col-span-7 aspect-[16/9] w-full rounded-[2rem] bg-[#F8F5EC] border border-[#e8e3d8]/60 flex items-end justify-center overflow-hidden relative px-6 pt-6 transition-all duration-500 group-hover:shadow-[0_30px_80px_-20px_rgba(139,92,246,0.1)]">
                 <div className="absolute top-4 left-4 z-30 px-3 py-1.5 bg-[#050505]/80 backdrop-blur-sm border border-zinc-800/60 rounded-full text-[10px] font-mono uppercase tracking-widest text-zinc-400">
                   // shipped in days
                 </div>
@@ -341,11 +350,11 @@ export default function Portfolio() {
               <motion.div
                 variants={fadeInUp}
                 className="lg:col-span-5 flex flex-col gap-6">
-                <div className="flex flex-wrap gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-widest text-emerald-400">
+                <div className="flex flex-wrap gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-widest text-violet-400/80">
                   <span>Next.js</span> <span>/</span> <span>Tailwind CSS</span>{" "}
                   <span>/</span> <span>Payload CMS</span>
                 </div>
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-100 tracking-tight leading-[1.1] group-hover:text-zinc-200 transition-colors">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-100 tracking-tight leading-[1.1] group-hover:text-zinc-50 transition-colors">
                   Genussraum
                 </h3>
                 <p className="text-zinc-400 leading-relaxed text-base lg:text-lg font-normal">
@@ -358,7 +367,7 @@ export default function Portfolio() {
                   href="https://genussraum.eu/"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-zinc-300 hover:text-emerald-400 transition-colors w-fit mt-4 bg-[#0a0a0a] px-7 py-4 border border-zinc-800 hover:border-emerald-500/30 rounded-full group/btn">
+                  className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-zinc-300 hover:text-violet-400 transition-colors w-fit mt-4 bg-[#0a0a0a] px-7 py-4 border border-zinc-800 hover:border-violet-500/30 rounded-full group/btn">
                   Live Site{" "}
                   <ArrowUpRight
                     size={18}
@@ -386,13 +395,13 @@ export default function Portfolio() {
                 Technologies I use daily
               </p>
             </div>
-            <div className="hidden md:flex items-center gap-2 text-zinc-600 font-mono text-sm uppercase tracking-widest">
+            <div className="hidden md:flex items-center gap-2 text-zinc-700 font-mono text-sm uppercase tracking-widest">
               [ 11 ]
             </div>
           </motion.div>
 
           <div className="flex flex-col gap-16 md:gap-24">
-            {techCategories.map((category, catIndex) => (
+            {techCategories.map((category) => (
               <motion.div
                 key={category.title}
                 initial="hidden"
@@ -403,7 +412,7 @@ export default function Portfolio() {
                   <h3 className="text-xl md:text-2xl font-bold text-zinc-300">
                     {category.title}
                   </h3>
-                  <div className="h-px bg-zinc-800 flex-grow" />
+                  <div className="h-px bg-zinc-800/80 flex-grow" />
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {category.items.map((tech) => (
@@ -416,9 +425,9 @@ export default function Portfolio() {
                         stiffness: 300,
                         damping: 20,
                       }}
-                      className="group flex flex-col items-center justify-center gap-6 p-8 rounded-[1.5rem] bg-[#0a0a0a] border border-zinc-900 text-zinc-500 transition-colors hover:border-emerald-500/30 hover:bg-[#0c0c0c] cursor-default relative overflow-hidden">
-                      {/* Subtle hover glow */}
-                      <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      className="group flex flex-col items-center justify-center gap-6 p-8 rounded-[1.5rem] bg-[#0a0a0a] border border-zinc-900 text-zinc-500 transition-all duration-300 hover:border-violet-500/20 hover:bg-[#0c0c0c] cursor-default relative overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.1)]">
+                      {/* Subtle hover gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-violet-500/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                       <tech.icon
                         className={`text-5xl md:text-6xl transition-colors duration-300 relative z-10 ${tech.color}`}
@@ -463,11 +472,11 @@ export default function Portfolio() {
               variants={fadeInUp}
               className="group relative grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 hover:bg-[#0a0a0a] p-6 lg:-mx-6 rounded-[2rem] transition-colors duration-500">
               <div className="md:col-span-1 font-mono text-xs md:text-sm text-zinc-500 uppercase tracking-widest md:pt-3 flex items-start gap-4">
-                <div className="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                <div className="w-2 h-2 rounded-full bg-violet-500 mt-1.5 shrink-0 shadow-[0_0_10px_rgba(139,92,246,0.6)]" />
                 2022 — Present
               </div>
               <div className="md:col-span-3">
-                <h3 className="text-3xl md:text-4xl font-bold text-zinc-100 tracking-tight leading-none mb-3 group-hover:text-emerald-400 transition-colors duration-300">
+                <h3 className="text-3xl md:text-4xl font-bold text-zinc-100 tracking-tight leading-none mb-3 group-hover:text-violet-400 transition-colors duration-300">
                   Full Stack Engineer
                 </h3>
                 <h4 className="text-zinc-400 font-mono text-xs md:text-sm mb-6 md:mb-8 uppercase tracking-widest flex items-center gap-2">
@@ -490,8 +499,8 @@ export default function Portfolio() {
               variants={fadeInUp}
               className="group relative grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 hover:bg-[#0a0a0a] p-6 lg:-mx-6 rounded-[2rem] transition-colors duration-500">
               <div className="md:col-span-1 font-mono text-xs md:text-sm text-zinc-600 uppercase tracking-widest md:pt-3 flex items-start gap-4">
-                <div className="w-2 h-2 rounded-full bg-zinc-700 mt-1.5" />
-                2020 — 2022
+                <div className="w-2 h-2 rounded-full bg-zinc-700 mt-1.5 shrink-0" />
+                2020 — Present
               </div>
               <div className="md:col-span-3">
                 <h3 className="text-3xl md:text-4xl font-bold text-zinc-400 tracking-tight leading-none mb-3 group-hover:text-zinc-200 transition-colors duration-300">
@@ -508,6 +517,34 @@ export default function Portfolio() {
                 </p>
               </div>
             </motion.div>
+
+            <div className="w-full h-px bg-zinc-900" />
+
+            {/* Education */}
+            <div>
+              <div className="flex items-center gap-6 mb-12">
+                <h3 className="text-xl md:text-2xl font-bold text-zinc-300 uppercase tracking-widest font-mono">
+                  Education
+                </h3>
+                <div className="h-px bg-zinc-800 flex-grow" />
+              </div>
+              <motion.div
+                variants={fadeInUp}
+                className="group relative grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 hover:bg-[#0a0a0a] p-6 lg:-mx-6 rounded-[2rem] transition-colors duration-500">
+                <div className="md:col-span-1 font-mono text-xs md:text-sm text-zinc-600 uppercase tracking-widest md:pt-3 flex items-start gap-4">
+                  <div className="w-2 h-2 rounded-full bg-zinc-700 mt-1.5 shrink-0" />
+                  2018 — 2022
+                </div>
+                <div className="md:col-span-3">
+                  <h3 className="text-3xl md:text-4xl font-bold text-zinc-400 tracking-tight leading-none mb-3 group-hover:text-zinc-200 transition-colors duration-300">
+                    Computer Engineering
+                  </h3>
+                  <h4 className="text-zinc-500 font-mono text-xs md:text-sm mb-6 md:mb-8 uppercase tracking-widest">
+                    Bachelor's degree · Taras Shevchenko National University of Kyiv
+                  </h4>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         </section>
 
@@ -518,22 +555,30 @@ export default function Portfolio() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
-          className="py-32 md:py-48 border-t border-zinc-900 text-center flex flex-col items-center justify-center gap-10 md:gap-14">
+          className="py-32 md:py-48 border-t border-zinc-900 text-center flex flex-col items-center justify-center gap-10 md:gap-14 relative overflow-hidden">
+          {/* Footer ambient glow */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[60rem] h-[30rem] rounded-full bg-violet-600/[0.06] blur-[120px]" />
+          </div>
+
           <motion.h2
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="text-[clamp(3.5rem,10vw,12rem)] font-black text-zinc-100 tracking-tighter uppercase leading-[0.9] cursor-default">
-            Let's <span className="text-emerald-400">Talk</span>
+            className="text-[clamp(3.5rem,10vw,12rem)] font-black text-zinc-100 tracking-tighter uppercase leading-[0.9] cursor-default relative z-10">
+            Let's{" "}
+            <span className="bg-gradient-to-r from-violet-400 via-violet-300 to-indigo-400 bg-clip-text text-transparent">
+              Talk
+            </span>
           </motion.h2>
           <a
             href="mailto:chornopolskyi@lux-medien.com"
-            className="text-zinc-400 hover:text-emerald-400 text-lg md:text-2xl font-mono decoration-zinc-800 hover:decoration-emerald-500/50 underline-offset-[8px] transition-all break-all px-4 inline-block group">
+            className="text-zinc-400 hover:text-violet-400 text-lg md:text-2xl font-mono underline-offset-[8px] transition-all break-all px-4 inline-block group relative z-10">
             <span className="relative">
               chornopolskyi@lux-medien.com
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-emerald-500/50 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out" />
+              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-violet-500/50 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out" />
             </span>
           </a>
-          <p className="text-[10px] text-zinc-600 font-mono uppercase tracking-widest mt-16 md:mt-24">
+          <p className="text-[10px] text-zinc-600 font-mono uppercase tracking-widest mt-16 md:mt-24 relative z-10">
             © {new Date().getFullYear()} Bohdan Chornopolskyi. Built with zero
             fluff.
           </p>
