@@ -120,7 +120,9 @@ export default function Portfolio() {
         transition={{ type: "spring", stiffness: 100, damping: 20, mass: 1 }}
         className="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-[90%] md:w-auto">
         <div className="flex items-center justify-between md:justify-center gap-4 md:gap-10 px-6 md:px-8 py-4 bg-[#0a0a0a]/85 backdrop-blur-xl border border-white/[0.06] rounded-full font-mono text-[10px] md:text-xs uppercase tracking-widest text-zinc-400 whitespace-nowrap shadow-2xl shadow-black/50 ring-1 ring-white/[0.04]">
-          <a href="#home" className="hover:text-violet-400 transition-colors duration-200">
+          <a
+            href="#home"
+            className="hover:text-violet-400 transition-colors duration-200">
             Home
           </a>
           <a
@@ -128,7 +130,9 @@ export default function Portfolio() {
             className="hover:text-violet-400 transition-colors duration-200">
             Works
           </a>
-          <a href="#stack" className="hover:text-violet-400 transition-colors duration-200">
+          <a
+            href="#stack"
+            className="hover:text-violet-400 transition-colors duration-200">
             Stack
           </a>
           <a
@@ -235,7 +239,7 @@ export default function Portfolio() {
                 <motion.a
                   whileHover={{ scale: 1.1, rotate: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/chornopolskyi/"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-center w-14 h-14 bg-[#0a0a0a] border border-zinc-800 rounded-full hover:text-violet-400 hover:border-violet-500/50 transition-colors duration-300">
@@ -291,8 +295,8 @@ export default function Portfolio() {
                 variants={fadeInUp}
                 className="lg:col-span-5 flex flex-col gap-6">
                 <div className="flex flex-wrap gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-widest text-violet-400/80">
-                  <span>TypeScript</span> <span>/</span> <span>Payload CMS</span>{" "}
-                  <span>/</span> <span>npm</span>
+                  <span>TypeScript</span> <span>/</span>{" "}
+                  <span>Payload CMS</span> <span>/</span> <span>npm</span>
                 </div>
                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-100 tracking-tight leading-[1.1] group-hover:text-zinc-50 transition-colors">
                   Payload Image Cropper
@@ -359,9 +363,9 @@ export default function Portfolio() {
                 </h3>
                 <p className="text-zinc-400 leading-relaxed text-base lg:text-lg font-normal">
                   A full restaurant & event venue website delivered under
-                  extreme time pressure. The client needed it live within
-                  days — it shipped on time. Proof that quality and urgency
-                  aren't mutually exclusive.
+                  extreme time pressure. The client needed it live within days —
+                  it shipped on time. Proof that quality and urgency aren't
+                  mutually exclusive.
                 </p>
                 <a
                   href="https://genussraum.eu/"
@@ -540,7 +544,8 @@ export default function Portfolio() {
                     Computer Engineering
                   </h3>
                   <h4 className="text-zinc-500 font-mono text-xs md:text-sm mb-6 md:mb-8 uppercase tracking-widest">
-                    Bachelor's degree · Taras Shevchenko National University of Kyiv
+                    Bachelor's degree · Taras Shevchenko National University of
+                    Kyiv
                   </h4>
                 </div>
               </motion.div>
@@ -557,7 +562,9 @@ export default function Portfolio() {
           variants={fadeInUp}
           className="py-32 md:py-48 border-t border-zinc-900 text-center flex flex-col items-center justify-center gap-10 md:gap-14 relative overflow-hidden">
           {/* Footer ambient glow */}
-          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden="true">
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[60rem] h-[30rem] rounded-full bg-violet-600/[0.06] blur-[120px]" />
           </div>
 
