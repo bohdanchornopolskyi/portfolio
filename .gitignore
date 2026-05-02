@@ -5,3 +5,7 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# next-sitemap build output
+public/sitemap*.xml
+public/robots.txt
