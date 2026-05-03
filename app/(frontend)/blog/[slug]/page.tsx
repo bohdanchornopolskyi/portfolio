@@ -2,10 +2,9 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import { RichText } from '@payloadcms/richtext-lexical/react'
 import type { Post, Media } from '@/payload-types'
 import Navbar from '@/components/Navbar'
-import { richTextConverters } from '@/lib/richtext-converters'
+import { RenderBlocks } from '@/components/RenderBlocks'
 
 export const dynamic = 'force-dynamic'
 
@@ -95,18 +94,7 @@ export default async function BlogPostPage({ params }: Props) {
         )}
 
         {/* Article body */}
-        <div className="prose prose-invert prose-zinc prose-lg max-w-none
-          prose-headings:font-black prose-headings:tracking-tight prose-headings:text-zinc-100
-          prose-p:text-zinc-400 prose-p:leading-relaxed
-          prose-a:text-violet-400 prose-a:no-underline hover:prose-a:text-violet-300
-          prose-strong:text-zinc-200
-          prose-code:text-violet-300 prose-code:bg-zinc-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-          prose-pre:bg-[#0a0a0a] prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-[1rem]
-          prose-blockquote:border-violet-500/40 prose-blockquote:text-zinc-500
-          prose-hr:border-zinc-800">
-          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-          <RichText data={post.content as any} converters={richTextConverters} />
-        </div>
+        <RenderBlocks blocks={post.blocks} />
 
         {/* Back link */}
         <div className="mt-20 pt-10 border-t border-zinc-900">

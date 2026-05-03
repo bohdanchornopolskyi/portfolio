@@ -162,21 +162,38 @@ export interface Post {
    */
   excerpt?: string | null;
   coverImage?: (string | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
+  blocks: (
+    | {
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'richText';
+      }
+    | {
+        /**
+         * Language for syntax highlighting (e.g. typescript, python, bash)
+         */
+        language?: string | null;
+        code: string;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'code';
+      }
+  )[];
   updatedAt: string;
   createdAt: string;
 }
@@ -310,7 +327,25 @@ export interface PostsSelect<T extends boolean = true> {
   publishedAt?: T;
   excerpt?: T;
   coverImage?: T;
-  content?: T;
+  blocks?:
+    | T
+    | {
+        richText?:
+          | T
+          | {
+              content?: T;
+              id?: T;
+              blockName?: T;
+            };
+        code?:
+          | T
+          | {
+              language?: T;
+              code?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
 }
