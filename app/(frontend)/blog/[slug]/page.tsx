@@ -5,6 +5,7 @@ import config from '@payload-config'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import type { Post, Media } from '@/payload-types'
 import Navbar from '@/components/Navbar'
+import { richTextConverters } from '@/lib/richtext-converters'
 
 export const dynamic = 'force-dynamic'
 
@@ -104,7 +105,7 @@ export default async function BlogPostPage({ params }: Props) {
           prose-blockquote:border-violet-500/40 prose-blockquote:text-zinc-500
           prose-hr:border-zinc-800">
           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-          <RichText data={post.content as any} />
+          <RichText data={post.content as any} converters={richTextConverters} />
         </div>
 
         {/* Back link */}
