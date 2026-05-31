@@ -12,7 +12,10 @@ export const Posts: CollectionConfig = {
     defaultColumns: ['title', 'slug', 'status', 'publishedAt'],
     preview: (doc) => {
       if (!doc?.slug) return null
-      return `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/blog/${doc.slug}`
+      const base = process.env.NEXT_PUBLIC_SERVER_URL
+        || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null)
+        || 'http://localhost:3000'
+      return `${base}/blog/${doc.slug}`
     },
   },
   fields: [
