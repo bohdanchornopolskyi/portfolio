@@ -389,13 +389,13 @@ export default function Portfolio() {
         </section>
 
         {/* STACK SECTION */}
-        <section id="stack" className="py-24 md:py-32 border-t border-zinc-900">
+        <section id="stack" className="py-16 md:py-24 border-t border-zinc-900">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="mb-16 md:mb-24 md:flex justify-between items-end">
+            className="mb-10 md:mb-14 md:flex justify-between items-end">
             <div>
               <h2 className="text-[clamp(3.5rem,6vw,6rem)] font-black text-zinc-100 mb-2 tracking-tighter uppercase leading-none">
                 Stack
@@ -409,7 +409,7 @@ export default function Portfolio() {
             </div>
           </motion.div>
 
-          <div className="flex flex-col gap-16 md:gap-24">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {techCategories.map((category) => (
               <motion.div
                 key={category.title}
@@ -417,24 +417,19 @@ export default function Portfolio() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={staggerContainer}>
-                <div className="flex items-center gap-6 mb-8 md:mb-10">
-                  <h3 className="text-xl md:text-2xl font-bold text-zinc-300">
-                    {category.title}
-                  </h3>
-                  <div className="h-px bg-zinc-800/80 flex-grow" />
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <h3 className="text-sm font-mono uppercase tracking-widest text-zinc-500 mb-3">
+                  {category.title}
+                </h3>
+                <div className="flex flex-wrap gap-2.5">
                   {category.items.map((tech) => (
                     <motion.div
                       variants={fadeIn}
                       key={tech.name}
-                      className="group flex flex-col items-center justify-center gap-6 p-8 rounded-[1.5rem] bg-[#0a0a0a] border border-zinc-900 text-zinc-500 transition-colors duration-300 hover:border-violet-500/20 hover:bg-[#0c0c0c] cursor-default relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-b from-violet-500/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
+                      className="group inline-flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg bg-[#0a0a0a] border border-zinc-900 text-zinc-500 transition-colors duration-300 hover:border-violet-500/20 hover:bg-[#0c0c0c] cursor-default">
                       <tech.icon
-                        className={`text-5xl md:text-6xl transition-colors duration-300 relative z-10 ${tech.color}`}
+                        className={`text-lg shrink-0 transition-colors duration-300 ${tech.color}`}
                       />
-                      <span className="font-mono text-xs md:text-sm group-hover:text-zinc-200 transition-colors uppercase tracking-widest relative z-10 text-center">
+                      <span className="font-mono text-xs md:text-sm group-hover:text-zinc-200 transition-colors uppercase tracking-wider">
                         {tech.name}
                       </span>
                     </motion.div>
