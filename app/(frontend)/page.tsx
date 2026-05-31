@@ -8,21 +8,31 @@ import {
   Database,
   Briefcase,
   MapPin,
+  Server,
+  Bot,
+  Terminal,
 } from "lucide-react";
 import {
   SiReact,
   SiNextdotjs,
   SiTypescript,
   SiTailwindcss,
-  SiPostgresql,
   SiPython,
   SiDjango,
   SiNestjs,
   SiDocker,
   SiGithubactions,
+  SiGsap,
+  SiFigma,
+  SiGit,
 } from "react-icons/si";
 import { motion, useScroll, useTransform } from "motion/react";
 import Navbar from "@/components/Navbar";
+
+const fadeIn: any = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
+};
 
 const fadeInUp: any = {
   hidden: { opacity: 0, y: 40 },
@@ -40,6 +50,14 @@ const staggerContainer: any = {
   },
 };
 
+const luxMedienHighlights = [
+  "Shipped client sites end to end — scoped architecture, built Next.js/React frontends, NestJS, Payload CMS, and Python/Django backends, content models, and transactional email flows.",
+  "Ran production myself — Dockerized apps, configured VPS hosts, wired CI/CD pipelines, and handled releases without handing off to a separate ops team.",
+  "Extended Payload CMS — authored the image-cropper plugin and tailored admin UX for editors and marketing teams.",
+  "Polished the product surface — TypeScript throughout, Tailwind-based UI, GSAP motion, and Figma-to-code work including components I designed myself.",
+  "Worked async across borders — daily collaboration with a German agency while based in Warsaw; comfortable owning tickets from brief to deploy.",
+];
+
 const techCategories = [
   {
     title: "Frontend",
@@ -56,31 +74,42 @@ const techCategories = [
         icon: SiTailwindcss,
         color: "group-hover:text-[#06B6D4]",
       },
+      { name: "GSAP", icon: SiGsap, color: "group-hover:text-[#88CE02]" },
     ],
   },
   {
-    title: "Backend",
+    title: "Backend & CMS",
     items: [
       { name: "NestJS", icon: SiNestjs, color: "group-hover:text-[#E0234E]" },
+      { name: "Payload CMS", icon: Database, color: "group-hover:text-white" },
       { name: "Python", icon: SiPython, color: "group-hover:text-[#FFD43B]" },
       { name: "Django", icon: SiDjango, color: "group-hover:text-[#44B78B]" },
-      {
-        name: "PostgreSQL",
-        icon: SiPostgresql,
-        color: "group-hover:text-[#4169E1]",
-      },
     ],
   },
   {
-    title: "DevOps & Tools",
+    title: "Ops & Delivery",
     items: [
       { name: "Docker", icon: SiDocker, color: "group-hover:text-[#2496ED]" },
       {
-        name: "CI/CD Pipelines",
+        name: "CI/CD",
         icon: SiGithubactions,
         color: "group-hover:text-[#2088FF]",
       },
-      { name: "Payload CMS", icon: Database, color: "group-hover:text-white" },
+      { name: "VPS", icon: Server, color: "group-hover:text-violet-400" },
+      { name: "Git", icon: SiGit, color: "group-hover:text-[#F05032]" },
+    ],
+  },
+  {
+    title: "Design",
+    items: [
+      { name: "Figma", icon: SiFigma, color: "group-hover:text-[#F24E1E]" },
+    ],
+  },
+  {
+    title: "Workflow",
+    items: [
+      { name: "Cursor", icon: Terminal, color: "group-hover:text-zinc-200" },
+      { name: "Claude Code", icon: Bot, color: "group-hover:text-[#D97757]" },
     ],
   },
 ];
@@ -131,7 +160,7 @@ export default function Portfolio() {
               whileHover={{ scale: 1.05 }}
               className="absolute -top-12 md:-top-4 left-0 md:left-4 px-4 py-2 border border-violet-500/25 rounded-full text-xs font-mono text-violet-400 flex items-center gap-2 backdrop-blur-sm bg-violet-500/[0.05] cursor-default shadow-[0_0_20px_rgba(139,92,246,0.08)]">
               <div className="w-2 h-2 rounded-full bg-violet-500 animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.9)]" />
-              Ready for work
+              Ready for work · Remote & hybrid · Warsaw
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -184,9 +213,11 @@ export default function Portfolio() {
               className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
               <div className="md:col-span-7 col-span-1 flex flex-col gap-5">
                 <p className="text-zinc-400 text-lg md:text-2xl font-normal leading-relaxed">
-                  I architect and build end-to-end web applications. Focusing on
-                  strictly typed React frontends, robust scalable backends, and
-                  high-performance delivery. Zero fluff.
+                  I ship production web apps end to end — from React/Next.js
+                  frontends and Payload CMS backends to Docker deployments,
+                  CI/CD, and VPS ops. Mostly remotely with{" "}
+                  <span className="text-zinc-300">Lux Medien</span>, a German
+                  agency, since March 2022.
                 </p>
                 <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-zinc-600">
                   <MapPin size={12} className="text-violet-500/60" />
@@ -256,17 +287,17 @@ export default function Portfolio() {
               variants={staggerContainer}
               className="group relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               <motion.div
-                variants={fadeInUp}
-                className="lg:col-span-7 aspect-[16/9] w-full rounded-[2rem] bg-[#0a0a0a] border border-zinc-900/80 flex items-end justify-center overflow-hidden relative px-6 pt-6 transition-all duration-500 group-hover:border-violet-500/15 group-hover:shadow-[0_30px_80px_-20px_rgba(139,92,246,0.12)]">
+                variants={fadeIn}
+                className="lg:col-span-7 aspect-[16/9] w-full rounded-[2rem] bg-[#0a0a0a] border border-zinc-900/80 flex items-end justify-center overflow-hidden relative px-6 pt-6 transition-colors duration-500 group-hover:border-violet-500/15">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/image-cropper.png"
                   alt="Payload Image Cropper plugin screenshot"
-                  className="w-full object-contain object-top rounded-t-xl transition-transform duration-700 group-hover:scale-[1.03] relative z-10"
+                  className="w-full object-contain object-top rounded-t-xl relative z-10"
                 />
               </motion.div>
               <motion.div
-                variants={fadeInUp}
+                variants={fadeIn}
                 className="lg:col-span-5 flex flex-col gap-6">
                 <div className="flex flex-wrap gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-widest text-violet-400/80">
                   <span>TypeScript</span> <span>/</span>{" "}
@@ -312,8 +343,8 @@ export default function Portfolio() {
               variants={staggerContainer}
               className="group relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               <motion.div
-                variants={fadeInUp}
-                className="lg:col-span-7 aspect-[16/9] w-full rounded-[2rem] bg-[#F8F5EC] border border-[#e8e3d8]/60 flex items-end justify-center overflow-hidden relative px-6 pt-6 transition-all duration-500 group-hover:shadow-[0_30px_80px_-20px_rgba(139,92,246,0.1)]">
+                variants={fadeIn}
+                className="lg:col-span-7 aspect-[16/9] w-full rounded-[2rem] bg-[#F8F5EC] border border-[#e8e3d8]/60 flex items-end justify-center overflow-hidden relative px-6 pt-6">
                 <div className="absolute top-4 left-4 z-30 px-3 py-1.5 bg-[#050505]/80 backdrop-blur-sm border border-zinc-800/60 rounded-full text-[10px] font-mono uppercase tracking-widest text-zinc-400">
                   // shipped in days
                 </div>
@@ -321,12 +352,12 @@ export default function Portfolio() {
                 <img
                   src="/genussraum.png"
                   alt="Genussraum website screenshot"
-                  className="w-full object-contain object-top rounded-t-xl transition-transform duration-700 group-hover:scale-[1.03] relative z-10"
+                  className="w-full object-contain object-top rounded-t-xl relative z-10"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#F8F5EC] to-transparent z-20 pointer-events-none" />
               </motion.div>
               <motion.div
-                variants={fadeInUp}
+                variants={fadeIn}
                 className="lg:col-span-5 flex flex-col gap-6">
                 <div className="flex flex-wrap gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-widest text-violet-400/80">
                   <span>Next.js</span> <span>/</span> <span>Tailwind CSS</span>{" "}
@@ -374,7 +405,7 @@ export default function Portfolio() {
               </p>
             </div>
             <div className="hidden md:flex items-center gap-2 text-zinc-700 font-mono text-sm uppercase tracking-widest">
-              [ 11 ]
+              [ 16 ]
             </div>
           </motion.div>
 
@@ -395,16 +426,9 @@ export default function Portfolio() {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {category.items.map((tech) => (
                     <motion.div
-                      variants={fadeInUp}
+                      variants={fadeIn}
                       key={tech.name}
-                      whileHover={{ y: -8, scale: 1.02 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 20,
-                      }}
-                      className="group flex flex-col items-center justify-center gap-6 p-8 rounded-[1.5rem] bg-[#0a0a0a] border border-zinc-900 text-zinc-500 transition-all duration-300 hover:border-violet-500/20 hover:bg-[#0c0c0c] cursor-default relative overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.1)]">
-                      {/* Subtle hover gradient overlay */}
+                      className="group flex flex-col items-center justify-center gap-6 p-8 rounded-[1.5rem] bg-[#0a0a0a] border border-zinc-900 text-zinc-500 transition-colors duration-300 hover:border-violet-500/20 hover:bg-[#0c0c0c] cursor-default relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-b from-violet-500/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                       <tech.icon
@@ -455,44 +479,20 @@ export default function Portfolio() {
               </div>
               <div className="md:col-span-3">
                 <h3 className="text-3xl md:text-4xl font-bold text-zinc-100 tracking-tight leading-none mb-3 group-hover:text-violet-400 transition-colors duration-300">
-                  Full Stack Engineer
+                  Full-stack Developer
                 </h3>
-                <h4 className="text-zinc-400 font-mono text-xs md:text-sm mb-6 md:mb-8 uppercase tracking-widest flex items-center gap-2">
-                  <Briefcase size={14} /> Lux-medien
+                <h4 className="text-zinc-400 font-mono text-xs md:text-sm mb-6 md:mb-8 uppercase tracking-widest flex items-center gap-2 flex-wrap">
+                  <Briefcase size={14} /> Lux Medien · remote · German agency ·
+                  Mar 2022
                 </h4>
-                <p className="text-zinc-400 leading-relaxed text-base md:text-lg font-normal max-w-3xl group-hover:text-zinc-300 transition-colors duration-300">
-                  Architecting scalable microservices and monolithic web
-                  applications from the ground up. Leading full-stack feature
-                  delivery, optimizing CI/CD pipelines, and maintaining robust
-                  infrastructure. Focused heavily on ensuring strict typing,
-                  code quality, and high-performance delivery across the stack.
-                </p>
-              </div>
-            </motion.div>
-
-            <div className="w-full h-px bg-zinc-900" />
-
-            {/* Timeline Item 2 */}
-            <motion.div
-              variants={fadeInUp}
-              className="group relative grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 hover:bg-[#0a0a0a] p-6 lg:-mx-6 rounded-[2rem] transition-colors duration-500">
-              <div className="md:col-span-1 font-mono text-xs md:text-sm text-zinc-600 uppercase tracking-widest md:pt-3 flex items-start gap-4">
-                <div className="w-2 h-2 rounded-full bg-zinc-700 mt-1.5 shrink-0" />
-                2020 — Present
-              </div>
-              <div className="md:col-span-3">
-                <h3 className="text-3xl md:text-4xl font-bold text-zinc-400 tracking-tight leading-none mb-3 group-hover:text-zinc-200 transition-colors duration-300">
-                  Frontend Developer
-                </h3>
-                <h4 className="text-zinc-500 font-mono text-xs md:text-sm mb-6 md:mb-8 uppercase tracking-widest flex items-center gap-2">
-                  <Briefcase size={14} /> Freelance
-                </h4>
-                <p className="text-zinc-500 leading-relaxed text-base md:text-lg font-normal max-w-3xl group-hover:text-zinc-400 transition-colors duration-300">
-                  Built custom interfaces, optimized web performance, and
-                  collaborated intimately with design teams and clients to
-                  transform complex specifications into responsive, interactive
-                  web applications. Primarily worked within the React ecosystem.
-                </p>
+                <ul className="flex flex-col gap-4 text-zinc-400 leading-relaxed text-base md:text-lg font-normal max-w-3xl group-hover:text-zinc-300 transition-colors duration-300">
+                  {luxMedienHighlights.map((item) => (
+                    <li key={item} className="flex gap-3">
+                      <span className="text-violet-500/60 mt-2 shrink-0">—</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </motion.div>
 
@@ -518,8 +518,14 @@ export default function Portfolio() {
                     Computer Engineering
                   </h3>
                   <h4 className="text-zinc-500 font-mono text-xs md:text-sm mb-6 md:mb-8 uppercase tracking-widest">
-                    Bachelor's degree · Taras Shevchenko National University of
-                    Kyiv
+                    Bachelor&apos;s degree ·{" "}
+                    <a
+                      href="https://knu.ua/en/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-violet-400 transition-colors">
+                      Taras Shevchenko National University of Kyiv
+                    </a>
                   </h4>
                 </div>
               </motion.div>
@@ -551,13 +557,21 @@ export default function Portfolio() {
               Talk
             </span>
           </motion.h2>
+          <p className="text-zinc-500 font-mono text-xs md:text-sm uppercase tracking-widest relative z-10">
+            Open to remote and hybrid roles in Warsaw · EU-friendly
+          </p>
           <a
-            href="mailto:chornopolskyi@lux-medien.com"
+            href="mailto:bohdan.chornopolskyi@gmail.com"
             className="text-zinc-400 hover:text-violet-400 text-lg md:text-2xl font-mono underline-offset-[8px] transition-all break-all px-4 inline-block group relative z-10">
             <span className="relative">
-              chornopolskyi@lux-medien.com
+              bohdan.chornopolskyi@gmail.com
               <span className="absolute left-0 bottom-0 w-full h-[2px] bg-violet-500/50 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out" />
             </span>
+          </a>
+          <a
+            href="mailto:chornopolskyi@lux-medien.com"
+            className="text-zinc-600 hover:text-zinc-400 text-sm font-mono transition-colors relative z-10">
+            chornopolskyi@lux-medien.com
           </a>
           <p className="text-[10px] text-zinc-600 font-mono uppercase tracking-widest mt-16 md:mt-24 relative z-10">
             © {new Date().getFullYear()} Bohdan Chornopolskyi. Built with zero

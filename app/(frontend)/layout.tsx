@@ -13,8 +13,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Bohdan Chornopolskyi | Software Engineer',
-  description: 'Professional Full Stack Developer Portfolio',
+  title: 'Bohdan Chornopolskyi | Full-stack Developer',
+  description:
+    'Full-stack developer in Warsaw, Poland. React, Next.js, Payload CMS, Docker, CI/CD, and VPS ops. Open to remote and hybrid roles.',
 };
 
 export default function FrontendLayout({children}: {children: React.ReactNode}) {
